@@ -42,7 +42,7 @@ dotnet run --urls "https://localhost:7262"
 
 ## **4. Документація AP**I
 
-Документацію для Postman можна переглянути за посиланням: \_\_\_ .
+Документацію для Postman можна переглянути за посиланням: https://documenter.getpostman.com/view/41681143/2sAYX3q3B6
 
 ### **Виконав:**
 
