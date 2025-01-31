@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TestWebApi.Models;
 
@@ -10,6 +11,7 @@ namespace TestWebApi.Controllers
 	{
 		private bool UsersExist() => StaticData.Users != null && StaticData.Users.Any();
 
+		[Authorize(Roles ="Admin")]
 		[HttpGet("users")]
 		public IActionResult GetAllUsers()
 		{
@@ -21,6 +23,7 @@ namespace TestWebApi.Controllers
 			return Ok(StaticData.Users);
 		}
 
+		[Authorize]
 		[HttpGet("user")]
 		public IActionResult GetUserById([FromQuery] int id)
 		{
@@ -39,6 +42,7 @@ namespace TestWebApi.Controllers
 			return Ok(user);
 		}
 
+		[Authorize]
 		[HttpPost("user/add")]
 		public IActionResult AddUser([FromBody] User newUser)
 		{
@@ -58,6 +62,7 @@ namespace TestWebApi.Controllers
 			return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
 		}
 
+		[Authorize(Roles ="User")]
 		[HttpPatch("user/update")]
 		public IActionResult UpdateUserById([FromQuery] int id, [FromBody] User updatedUser)
 		{
@@ -91,6 +96,7 @@ namespace TestWebApi.Controllers
 			return Ok(target);
 		}
 
+		[Authorize(Roles = "Admin")]
 		[HttpDelete("user/delete")]
 		public IActionResult DeleteUser([FromQuery] int id)
 		{
