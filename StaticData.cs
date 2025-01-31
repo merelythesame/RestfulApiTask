@@ -13,5 +13,11 @@ namespace TestWebApi
 			new User { Id = 5, Name = "Alex5", Email = "ipz232_pov@student.ztu.edu.ua" },
 			new User { Id = 6, Name = "Alex6", Email = "ipz232_pov@student.ztu.edu.ua" }
 		};
+
+		public static List<Member> Members = new()
+		{
+			new Member { Id = 1, Username = "admin", Password = "admin", Role = "Admin" },
+			new Member { Id = 2, Username = "user", Password = "user", Role = "User" }
+		};
 	}
 }
